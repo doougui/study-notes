@@ -41,3 +41,7 @@ Contrary to local variables, useState:
 
 - Step 3: React commits changes to the DOM 
   - React only changes the DOM nodes if there’s a difference between renders
+
+## Why you should not mutate states?
+
+- Without using the state setting function, React has no idea that object has changed, so React does not do anything in response.
