@@ -86,3 +86,30 @@ function List({ items }) {
   // ...
 }
 ```
+
+## Effects “react” to reactive values 
+
+Your Effect reads two variables (serverUrl and roomId), but you only specified roomId as a dependency:
+
+```js
+const serverUrl = 'https://localhost:1234';
+
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId]);
+  // ...
+}
+```
+
+Why doesn’t serverUrl need to be a dependency?
+
+This is because the serverUrl never changes due to a re-render. It’s always the same no matter how many times and with which props and state the component re-renders. Since serverUrl never changes, it wouldn’t make sense to specify it as a dependency. After all, dependencies only do something when they change over time!
+
+On the other hand, roomId may be different on a re-render. Props, state, and other values declared inside the component are reactive because they’re calculated during rendering and participate in the React data flow.
+
+If serverUrl was a state variable, it would be reactive. Reactive values must be included in dependencies
