@@ -1,0 +1,3 @@
+How to tell if a calculation is expensive? 
+
+In general, unless you’re creating or looping over thousands of objects, it’s probably not expensive. If you want to get more confidence, you can add a console log to measure the time spent in a piece of code. If the overall logged time adds up to a significant amount (say, 1ms or more), it might make sense to memoize that calculation. Keep in mind that your machine is probably faster than your users’ so it’s a good idea to test the performance with an artificial slowdown. For example, Chrome offers a CPU Throttling option for this.
