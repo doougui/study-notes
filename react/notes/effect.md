@@ -187,7 +187,7 @@ export default function App() {
 
 If the object does not depend on any props and state, you can move that object outside your component. This way, you prove to the linter that it’s not reactive. It can’t change as a result of a re-render, so it doesn’t need to be a dependency of your Effect.
 
-## How to avoid using props that are OBJECTS as a useEffect dependency? (https://beta.reactjs.org/learn/removing-effect-dependencies#read-primitive-values-from-objects)
+## [How to avoid using props that are OBJECTS as a useEffect dependency?](https://beta.reactjs.org/learn/removing-effect-dependencies#read-primitive-values-from-objects)
 
 Instead of doing this:
 ```js
@@ -229,7 +229,7 @@ function ChatRoom({ options }) {
 
 The logic gets a little repetitive (you read some values from an object outside an Effect, and then create an object with the same values inside the Effect). But it makes it very explicit what information your Effect actually depends on. If an object is re-created unintentionally by the parent component, the chat would not re-connect. However, if options.roomId or options.serverUrl actually change, the chat would re-connect as you’d expect.
 
-## How to avoid using props that are FUNCTIONS as a useEffect dependency? (https://beta.reactjs.org/learn/removing-effect-dependencies#calculate-primitive-values-from-functions)
+## [How to avoid using props that are FUNCTIONS as a useEffect dependency?](https://beta.reactjs.org/learn/removing-effect-dependencies#calculate-primitive-values-from-functions)
 
 To avoid making it a dependency (and thus causing it to re-connect on re-renders), call it outside the Effect.
 We can do the same thing as we did before:
